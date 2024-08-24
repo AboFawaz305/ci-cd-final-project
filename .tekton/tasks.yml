@@ -1,9 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
-name: cleanup
+metadata:
+  name: cleanup
 spec:
-  workspace:
-    name: source
+  workspaces:
+    - name: source
   steps:
     - name: remove
       image: alpine:3
@@ -33,10 +34,11 @@ spec:
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
-name: nose
+metadata:
+  name: nose
 spec:
-  workspace:
-    name: source
+  workspaces:
+    - name: source
   params:
     - name: args
       description: Arguments to pass to nose
